@@ -13,10 +13,7 @@ class CreateStagiairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stagiaires', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        });
+        //
     }
 
     /**

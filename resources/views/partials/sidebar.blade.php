@@ -28,7 +28,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestprojet" >
     <i class="fas fa-fw fa-cog"></i>
     <span>Gestion des projets</span>
   </a>
@@ -49,14 +49,14 @@
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestclient" >
     <i class="fas fa-fw fa-cog"></i>
     <span>Gestion des clients</span>
   </a>
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestservice" >
     <i class="fas fa-fw fa-cog"></i>
     <span>Gestion des services</span>
   </a>

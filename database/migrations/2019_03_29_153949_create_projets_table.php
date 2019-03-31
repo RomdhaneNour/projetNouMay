@@ -15,6 +15,11 @@ class CreateProjetsTable extends Migration
     {
         Schema::create('projets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('quantite');
+            $table->float('prixtotal');
+            $table->date('datedebut');
+            $table->date('datefin');
+            $table->text('domaine');
             $table->timestamps();
         });
     }
