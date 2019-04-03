@@ -15,6 +15,11 @@ class CreatePFESTable extends Migration
     {
         Schema::create('p_f_e_s', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
+            $table->string('titre');
+            $table->string('sujet');
+            $table->integer('periode');
+            $table->integer('nb_stagiaire');
             $table->timestamps();
         });
     }

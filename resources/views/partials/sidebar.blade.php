@@ -35,14 +35,14 @@
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/stagiaire" >
     <i class="fas fa-fw fa-cog"></i>
     <span>Gestion des stagiaires</span>
   </a>
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestionpfe" >
     <i class="fas fa-fw fa-cog"></i>
     <span>Gestion des PFE</span>
   </a>
