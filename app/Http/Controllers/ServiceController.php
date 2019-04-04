@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ServiceController extends Controller
 {
@@ -14,7 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services=service::orderBy('created_at','desc')->get();
+        return view('service.service',compact('services'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('service.create');
+
     }
 
     /**
@@ -35,7 +39,9 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->only('name', 'description', 'pic');
+        $service = Service::create($input); //Create Project table entry
+        return back()->withmessage('service added');
     }
 
     /**
@@ -55,9 +61,15 @@ class ServiceController extends Controller
      * @param  \App\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(service $service)
+    public function edit(request $request)
     {
-        //
+        $data=[
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'pic'=>$request->pic
+        ];
+        DB::table('services')->where('id',$request['id'])->update($data);
+        return back()->withmessage('service updated');
     }
 
     /**
@@ -69,7 +81,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, service $service)
     {
-        //
+        $service=service::where('id',$request['id'])->first();
+        
+        if($service==null)
+       {
+           return back();
+       }
+       else{
+          
+       return view('service.updateservice',compact('service'));
+       }
     }
 
     /**
@@ -78,8 +99,11 @@ class ServiceController extends Controller
      * @param  \App\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(service $service)
+    public function destroy(request $request)
     {
-        //
+        $service=Service::where('id',$request['id'])->first();
+        if($service->delete()) { 
+            return back()->with('message', 'Service deleted.'); 
+       }
     }
 }

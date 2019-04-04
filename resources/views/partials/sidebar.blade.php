@@ -28,41 +28,51 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestprojet" >
     <i class="fas fa-fw fa-cog"></i>
-    <span>Gestion des projets</span>
+    <span>projets</span>
   </a>
 </li>
 
 <li class="nav-item">
   <a class="nav-link collapsed" href="/stagiaire" >
     <i class="fas fa-fw fa-cog"></i>
-    <span>Gestion des stagiaires</span>
+    <span>stagiaires</span>
   </a>
 </li>
 
 <li class="nav-item">
   <a class="nav-link collapsed" href="/gestionpfe" >
     <i class="fas fa-fw fa-cog"></i>
-    <span>Gestion des PFE</span>
+    <span>PFE</span>
   </a>
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestclient" >
     <i class="fas fa-fw fa-cog"></i>
-    <span>Gestion des clients</span>
+    <span>clients</span>
   </a>
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" >
+  <a class="nav-link collapsed" href="/gestservice" >
     <i class="fas fa-fw fa-cog"></i>
-    <span>Gestion des services</span>
+    <span>services</span>
   </a>
 </li>
-
-
+<li class="nav-item">
+  <a class="nav-link collapsed" href="/gestmodule" >
+    <i class="fas fa-fw fa-cog"></i>
+    <span>modules</span>
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link collapsed" href="/devis" >
+    <i class="fas fa-fw fa-cog"></i>
+    <span>generation de devis</span>
+  </a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider">

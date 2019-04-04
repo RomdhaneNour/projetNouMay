@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjetsTable extends Migration
+class CreateDevisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateProjetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projets', function (Blueprint $table) {
+        Schema::create('devis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantite');
-            $table->float('prixtotal');
-            $table->date('datedebut');
-            $table->date('datefin');
-            $table->text('domaine');
+            $table->integer('id_projet');
+            $table->float('prix_total');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateProjetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projets');
+        Schema::dropIfExists('devis');
     }
 }
