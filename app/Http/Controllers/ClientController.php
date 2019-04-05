@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\client;
+use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class ClientController extends Controller
@@ -41,7 +44,19 @@ class ClientController extends Controller
     {
         $input = $request->only('name', 'CIN', 'email', 'password');
         $client = Client::create($input); //Create Client table entry
-        return back()->withmessage('client added');;
+        client::create([
+            'name' => $request['name'],
+            'CIN' => $request['CIN'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return back()->withmessage('client added');
+
     }
 
     /**

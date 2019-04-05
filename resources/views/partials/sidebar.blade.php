@@ -20,13 +20,15 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider">
-
+@role('admin')
 <!-- Heading -->
 <div class="sidebar-heading">
+
   Les gestions
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
+
 <li class="nav-item">
   <a class="nav-link collapsed" href="/gestprojet" >
     <i class="fas fa-fw fa-cog"></i>
@@ -61,9 +63,7 @@
     <span>Gestion des services</span>
   </a>
 </li>
-
-
-
+@endrole
 <!-- Divider -->
 <hr class="sidebar-divider">
 

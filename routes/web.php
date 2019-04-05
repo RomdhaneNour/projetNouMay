@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('devrows');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/gestprojet', 'ProjetController@index')->name('projet');
 Route::get('/newprojet', 'ProjetController@create')->name('newprojet');
 Route::get('/addprojet', 'ProjetController@store')->name('addprojet');
@@ -36,3 +36,7 @@ Route::get('/addservice', 'ServiceController@store')->name('addservice');
 Route::get('/updateservice/{id}', 'ServiceController@update')->name('updateservice');
 Route::get('/editservice/{id}', 'ServiceController@edit')->name('editservice');
 Route::get('/deleteservice/{id}', 'ServiceController@destroy')->name('deleteservice');
+Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+});
