@@ -13,7 +13,16 @@ class CreateStagiairesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('stagiaires', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('email')->unique();
+            $table->integer('id_pfe');
+            $table->string('msg');
+            $table->string('cv');
+            $table->timestamps();
+        });
     }
 
     /**

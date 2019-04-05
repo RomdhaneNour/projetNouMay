@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\stagiaire;
+use App\PFE;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class StagiaireController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class StagiaireController extends Controller
      */
     public function index()
     {
-        //
+        $stagiaire=stagiaire::orderBy('created_at','desc')->get();
+       return view('stagiaire.geststagiaire',compact('stagiaire'));
     }
 
     /**
@@ -22,9 +24,9 @@ class StagiaireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(PFE $pfe)
+    {    $pfe=PFE::orderBy('created_at','desc')->get();
+        return view ('stagiaire.ajout',compact('pfe'));
     }
 
     /**
@@ -35,7 +37,15 @@ class StagiaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $stagiaire=new stagiaire();
+       $stagiaire->nom=$request['nom'];
+       $stagiaire->prenom=$request['prenom'];
+       $stagiaire->email=$request['email'];
+       $stagiaire->id_pfe=$request['pfe'];
+       $stagiaire->msg=$request['msg'];
+       $stagiaire->cv=$request['cv'];
+       $stagiaire->save();
+       return back()->withMessage('stagiaire ajouter');
     }
 
     /**
@@ -44,9 +54,10 @@ class StagiaireController extends Controller
      * @param  \App\stagiaire  $stagiaire
      * @return \Illuminate\Http\Response
      */
-    public function show(stagiaire $stagiaire)
+    public function show(stagiaire $stagiaire , Request $request)
     {
-        //
+        $stagiaire=stagiaire::where('id',$request['id'])->first();
+        return view('stagiaire.showsta',compact('stagiaire'));
     }
 
     /**
@@ -55,9 +66,18 @@ class StagiaireController extends Controller
      * @param  \App\stagiaire  $stagiaire
      * @return \Illuminate\Http\Response
      */
-    public function edit(stagiaire $stagiaire)
+    public function edit(Request $request)
     {
-        //
+       $data=[
+           'nom'=>$request['nom'],
+           'prenom'=>$request['prenom'],
+           'email'=>$request['email'],
+           'id_pfe'=>$request['pfe'],
+           'msg'=>$request['msg'],
+           'cv'=>$request['cv']
+       ];
+       DB::table('stagiaires')->where('id',$request['id'])->update($data);
+       return back()->withmessage('updated');
     }
 
     /**
@@ -67,9 +87,17 @@ class StagiaireController extends Controller
      * @param  \App\stagiaire  $stagiaire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stagiaire $stagiaire)
-    {
-        //
+    public function update(Request $request, stagiaire $stagiaire, PFE $pfe)
+    {   $pfe=PFE::orderBy('created_at','desc')->get();
+        $stagiaire=stagiaire::where('id',$request['id'])->first();
+        if($stagiaire==null)
+        {
+            return back();
+        }else
+        {
+               return view('stagiaire.modifier',compact('stagiaire','pfe'));
+        }
+     
     }
 
     /**
@@ -78,8 +106,10 @@ class StagiaireController extends Controller
      * @param  \App\stagiaire  $stagiaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stagiaire $stagiaire)
+    public function destroy(stagiaire $stagiaire , Request $request)
     {
-        //
+        $stagiaire=stagiaire::where('id',$request['id'])->first();
+        $stagiaire->delete();
+        return back();
     }
 }

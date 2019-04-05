@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePFESTable extends Migration
+class CreateModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreatePFESTable extends Migration
      */
     public function up()
     {
-        Schema::create('p_f_e_s', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
-            $table->string('titre');
-            $table->string('sujet');
-            $table->integer('periode');
-            $table->integer('nb_stagiaire');
+            $table->string('nom_module');
+            $table->float('prix');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreatePFESTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_f_e_s');
+        Schema::dropIfExists('modules');
     }
 }
